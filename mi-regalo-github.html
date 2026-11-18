@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#fff0f4">
+<title>Te amo :&gt;</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Nunito:wght@400;500;600;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    min-height: 100vh;
+    padding: 20px 12px 50px;
+    background: linear-gradient(165deg, #fff0f4 0%, #fff7fa 45%, #fdf0f5 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: #59414b;
+    font-family: 'Nunito', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Corazones flotantes de fondo */
+  .hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .hearts i {
+    position: absolute;
+    bottom: -40px;
+    color: #e85d83;
+    opacity: 0.13;
+    animation: subir 16s linear infinite;
+    font-style: normal;
+  }
+  .hearts i:nth-child(1) { left: 5%;  font-size: 18px; animation-duration: 14s; }
+  .hearts i:nth-child(2) { left: 18%; font-size: 12px; animation-duration: 18s; animation-delay: 2s; }
+  .hearts i:nth-child(3) { left: 35%; font-size: 22px; animation-duration: 15s; animation-delay: 4s; }
+  .hearts i:nth-child(4) { left: 55%; font-size: 14px; animation-duration: 17s; animation-delay: 1s; }
+  .hearts i:nth-child(5) { left: 72%; font-size: 16px; animation-duration: 13s; animation-delay: 3s; }
+  .hearts i:nth-child(6) { left: 88%; font-size: 11px; animation-duration: 19s; animation-delay: 5s; }
+  .hearts i:nth-child(7) { left: 42%; font-size: 20px; animation-duration: 16s; animation-delay: 6s; }
+
+  @keyframes subir {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+    8%   { opacity: 0.16; }
+    92%  { opacity: 0.1; }
+    100% { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+  }
+
+  .card {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 640px);
+    background: #ffffff;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid #f3d4df;
+    box-shadow: 
+      0 2px 4px rgba(109,41,64,0.04),
+      0 22px 55px rgba(109,41,64,0.12),
+      0 0 0 1px rgba(255,255,255,0.7) inset;
+  }
+
+  /* Header */
+  .hero {
+    text-align: center;
+    padding: 42px 24px 26px;
+    background: linear-gradient(180deg, #fff0f4 0%, #fff8fa 100%);
+    position: relative;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 12%; right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #f4c2d0, transparent);
+  }
+
+  .tiny {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e85d83;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(36px, 9vw, 54px);
+    line-height: 1.08;
+    color: #e85d83;
+    margin: 4px 0 14px;
+  }
+
+  .sub {
+    color: #8c5a6e;
+    font-size: 15.5px;
+    line-height: 1.55;
+    max-width: 320px;
+    margin: 0 auto 22px;
+  }
+
+  /* GIFs arriba */
+  .gifs-top {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+  }
+  .gifs-top img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 16px;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 6px 18px rgba(232,93,131,0.18);
+  }
+
+  /* Cover principal */
+  .cover-wrap {
+    position: relative;
+    margin: 0;
+  }
+  .cover-wrap img {
+    width: 100%;
+    max-height: 380px;
+    object-fit: cover;
+    display: block;
+  }
+  .cover-fade {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 70px;
+    background: linear-gradient(transparent, #fff);
+    pointer-events: none;
+  }
+
+  /* Cuerpo */
+  .body {
+    padding: 6px 26px 8px;
+  }
+
+  .letter-deco {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 2px;
+  }
+  .letter-deco img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    border-radius: 14px;
+  }
+
+  .letter {
+    font-size: 16.8px;
+    line-height: 1.9;
+    white-space: pre-wrap;
+    text-align: center;
+    color: #5a3d48;
+    padding: 12px 4px 8px;
+  }
+
+  /* Galería de fotos (desde GitHub) */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 20px 0 6px;
+  }
+  .gallery img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(109,41,64,0.09);
+    background: #fdf2f6;
+  }
+
+  /* Reproductor */
+  .music {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(135deg, #fff0f4 0%, #ffe9f0 100%);
+    padding: 15px 17px;
+    border-radius: 20px;
+    margin: 24px 0 8px;
+    border: 1px solid #f7d0dd;
+    box-shadow: 0 6px 20px rgba(232,93,131,0.09);
+  }
+  .music button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #e85d83, #d64570);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(232,93,131,0.38);
+    transition: transform 0.15s;
+  }
+  .music button:active { transform: scale(0.93); }
+  .music .info {
+    flex: 1;
+    min-width: 0;
+  }
+  .music strong {
+    display: block;
+    font-size: 15px;
+    color: #c23a62;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .music small {
+    display: block;
+    color: #9a6b7a;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+
+  /* Cierre */
+  .end {
+    text-align: center;
+    padding: 16px 20px 38px;
+  }
+  .end p {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 20px;
+    color: #e85d83;
+    margin-bottom: 16px;
+  }
+  .end img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(232,93,131,0.16);
+  }
+
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 22px 55px rgba(109,41,64,0.12); }
+    50% { box-shadow: 0 24px 62px rgba(232,93,131,0.18); }
+  }
+  .card { animation: glow 7s ease-in-out infinite; }
+
+  @media (max-width: 420px) {
+    .gifs-top img { width: 54px; height: 54px; }
+    .letter { font-size: 15.8px; }
+    h1 { font-size: 34px; }
+    .gallery { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="hearts" aria-hidden="true">
+    <i>♡</i><i>♥</i><i>♡</i><i>♥</i><i>♡</i><i>♥</i><i>♡</i>
+  </div>
+
+  <main class="card">
+    <header class="hero">
+      <div class="tiny">Para mí Bebé Hermosa 💘</div>
+      <h1>Te amo :></h1>
+      <div class="sub">Lo que pienso en una pequeña dedicatoria.</div>
+      <div class="gifs-top">
+        <img src="https://media1.tenor.com/m/lnI645QIjMAAAAAd/gatitos-enamorados-besos-de-amor.gif" alt="" loading="lazy">
+        <img src="https://media1.tenor.com/m/gk7nRJjSIoYAAAAd/peach-goma-love.gif" alt="" loading="lazy">
+      </div>
+    </header>
+
+    <!-- Foto principal desde GitHub -->
+    <div class="cover-wrap">
+      <img src="https://raw.githubusercontent.com/AstarothDx/Jadem/main/foto.jpg" alt="Nuestra foto" loading="lazy"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <div style="display:none; padding:40px 20px; text-align:center; color:#c23a62; background:#fff0f4;">
+        Sube <strong>foto.jpg</strong> a tu repositorio para ver la foto aquí
+      </div>
+      <div class="cover-fade"></div>
+    </div>
+
+    <section class="body">
+      <div class="letter-deco">
+        <img src="https://media1.tenor.com/m/FYrmLKoB1UIAAAAd/peach-and-goma-peach-loves-goma.gif" alt="" loading="lazy">
+      </div>
+      <div class="letter">Amorm, no sé exactamente cómo explicarte lo que siento por ti, pero hay algo que tengo muy claro: eres alguien que ha comenzado a ocupar un lugar muy especial en mi corazón. Me gusta tu forma de ser, tu manera de hacerme sonreír y esa sensación tan bonita que me provocas incluso sin darte cuenta.  No quiero prometerte un mundo perfecto, pero sí quiero ofrecerte sentimientos sinceros, cariño y la oportunidad de demostrarte lo mucho que puedes llegar a significar para mí. No sé qué nos depare el futuro, pero si hay algo que quisiera es poder vivir momentos bonitos a tu lado.  Quizá estas palabras no sean suficientes para expresar todo lo que siento, pero quiero que sepas algo: me encantas, te amo, amorm, y no de una manera pasajera. Me gustas de esa forma en la que alguien comienza a convertirse en un pensamiento bonito al que siempre quieres regresar y nunca salirte. ❤️</div>
+
+      <!-- Galería (si subes más fotos) -->
+      <div class="gallery" id="gallery">
+        <img src="https://raw.githubusercontent.com/AstarothDx/Jadem/main/foto2.jpg" alt="" loading="lazy" onerror="this.style.display='none'">
+        <img src="https://raw.githubusercontent.com/AstarothDx/Jadem/main/foto3.jpg" alt="" loading="lazy" onerror="this.style.display='none'">
+        <img src="https://raw.githubusercontent.com/AstarothDx/Jadem/main/foto4.jpg" alt="" loading="lazy" onerror="this.style.display='none'">
+        <img src="https://raw.githubusercontent.com/AstarothDx/Jadem/main/foto5.jpg" alt="" loading="lazy" onerror="this.style.display='none'">
+      </div>
+
+      <div class="music">
+        <button id="play" aria-label="Reproducir">▶</button>
+        <div class="info">
+          <strong>Una canción para ti</strong>
+          <small>Nuestra Canción 🫶</small>
+        </div>
+      </div>
+    </section>
+
+    <div class="end">
+      <p>Con mucho cariño y amorm ♡</p>
+      <img src="https://media1.tenor.com/m/gk7nRJjSIoYAAAAd/peach-goma-love.gif" alt="" loading="lazy">
+    </div>
+  </main>
+
+<script>
+  // Canción desde tu repositorio de GitHub
+  const audio = new Audio("https://raw.githubusercontent.com/AstarothDx/Jadem/main/nuestra-cancion.mp3");
+  audio.loop = true;
+  const btn = document.getElementById('play');
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play().catch(e => {
+        alert("Sube el archivo 'nuestra-cancion.mp3' a tu repositorio de GitHub para que suene la canción.");
+      });
+      btn.textContent = 'Ⅱ';
+    } else {
+      audio.pause();
+      btn.textContent = '▶';
+    }
+  });
+</script>
+</body>
+</html>
