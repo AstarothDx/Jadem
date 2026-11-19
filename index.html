@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<!--
+  PUBLICAR EN GITHUB PAGES:
+  1) Sube este archivo como index.html a la raíz del repositorio.
+  2) Sube junto a él: foto.jpg, foto1.jpg, foto2.jpg... y nuestra-cancion.mp3.
+  3) Las fotos del álbum se cargan desde GitHub optimizadas a WebP (máximo 1280 px por lado).
+  4) La fecha especial ya está configurada: 03/04/2026 (3 de abril de 2026).
+  5) En GitHub: Settings > Pages > Deploy from a branch > main > /(root).
+  No necesita servidor, PHP, base de datos ni dependencias de npm.
+-->
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17152d">
+<title>Un pequeño universo para ti ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&display=swap');
+:root{--ink:#f7efff;--muted:#c8bddc;--pink:#f5a9d0;--lav:#b9a8ff;--blue:#9bd8ed;--glass:rgba(35,29,65,.68);--line:rgba(230,213,255,.2);--deep:#111024}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{min-height:100vh;background:radial-gradient(ellipse at 15% 8%,#514071 0,transparent 38%),radial-gradient(ellipse at 85% 28%,#3b456d 0,transparent 35%),radial-gradient(ellipse at 50% 100%,#452c56 0,transparent 45%),linear-gradient(145deg,#111024,#1c1a39 52%,#17152d);color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:radial-gradient(1px 1px at 12% 18%,#fff 99%,transparent),radial-gradient(1px 1px at 72% 12%,#fff 99%,transparent),radial-gradient(2px 2px at 42% 63%,#fff 99%,transparent),radial-gradient(1px 1px at 88% 75%,#fff 99%,transparent),radial-gradient(1px 1px at 22% 86%,#fff 99%,transparent);background-size:240px 210px;opacity:.48}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+#sky{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.star{position:absolute;color:#fff;opacity:.65;animation:twinkle 3.5s ease-in-out infinite alternate}
+@keyframes twinkle{to{opacity:.15;transform:scale(.65)}}
+.petal{position:absolute;top:-35px;font-size:18px;opacity:.8;animation:fall linear forwards;filter:drop-shadow(0 0 8px #f5a9d0)}
+@keyframes fall{to{transform:translate3d(var(--drift),110vh,0) rotate(620deg);opacity:0}}
+.shell{width:min(100% - 28px,820px);margin:24px auto 70px;position:relative;z-index:1}
+.hero{text-align:center;padding:46px 20px 30px}
+.eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#e8b9e5}
+h1,h2,h3,.serif{font-family:'Playfair Display',serif;font-weight:500}
+h1{font-size:clamp(42px,9vw,76px);line-height:1.04;background:linear-gradient(110deg,#fff,#f4b8df 48%,#b9c9ff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 36px #cda5ff35;margin:12px 0}
+.hero p{max-width:500px;margin:auto;color:#d4c9e6;line-height:1.8}
+.glowline{width:130px;height:1px;margin:22px auto;background:linear-gradient(90deg,transparent,#f4b8df,transparent)}
+.panel{background:linear-gradient(145deg,rgba(49,42,83,.76),rgba(27,25,54,.72));border:1px solid var(--line);border-radius:28px;padding:clamp(20px,4vw,34px);margin:22px 0;box-shadow:0 22px 70px #08071655,inset 0 1px #ffffff12;backdrop-filter:blur(5px)}
+.section-head{text-align:center;margin-bottom:22px}
+.section-head .eyebrow{margin-bottom:8px}
+h2{font-size:clamp(27px,5vw,39px);color:#f6d8ee}
+.section-head p{color:var(--muted);font-size:14px;margin-top:8px;line-height:1.7}
+.btn{border:1px solid #f3c1e3aa;background:linear-gradient(120deg,#d88fbd,#8f83ce);color:#211a39;border-radius:999px;padding:12px 20px;font-weight:700;box-shadow:0 8px 26px #d18fc333;transition:.2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn.ghost{background:#ffffff0b;color:#f7eafa;border-color:#ffffff35;box-shadow:none}
+.btn.small{padding:9px 15px;font-size:13px}
+.center{text-align:center}
+/* sobre */
+.intro{min-height:310px;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden}
+.envelope-wrap{width:min(100%,390px);margin:auto}
+.envelope{width:230px;height:145px;margin:20px auto 18px;position:relative;cursor:pointer;filter:drop-shadow(0 18px 24px #09081777);transition:.5s}
+.env-back{position:absolute;inset:0;background:linear-gradient(135deg,#a99de8,#e8a9d1);border-radius:12px}
+.env-front{position:absolute;inset:0;background:linear-gradient(145deg,#d6b6f0,#edb6d8);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:10px}
+.env-flap{position:absolute;inset:0;background:linear-gradient(145deg,#f2c4e4,#b8a9ee);clip-path:polygon(0 0,100% 0,50% 62%);transform-origin:top;transition:transform .8s;z-index:3}
+.seal{position:absolute;z-index:4;left:50%;top:54%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#9d527f;color:#fff;border:2px solid #f9d8ec;font-size:20px;box-shadow:0 3px 15px #44264c66;transition:.3s}
+.envelope.open .env-flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.3)}
+.envelope.open{transform:translateY(10px) scale(.92)}
+.letter-reveal{max-height:0;opacity:0;overflow:hidden;transition:max-height 1s ease,opacity .8s ease}
+.letter-reveal.show{max-height:4000px;opacity:1}
+.letter-paper{background:linear-gradient(135deg,#fff6fb,#f2eaff);color:#59435f;border-radius:20px;padding:24px;margin-top:20px;box-shadow:0 12px 34px #07061755;text-align:left}
+.letter-paper .tiny{color:#a65d91;letter-spacing:.18em;font-size:11px;text-align:center;margin-bottom:12px}
+.letter-paper .letter{font-size:15.5px;line-height:1.95;white-space:pre-wrap;text-align:center}
+/* galeria */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:17px}
+.polaroid{background:#f8eff8;color:#57445d;padding:10px 10px 15px;border-radius:5px;box-shadow:0 12px 28px #09081766;transform:rotate(var(--tilt));transition:.3s}
+.polaroid:hover{transform:rotate(0) translateY(-5px) scale(1.02)}
+.polaroid img{width:100%;height:210px;object-fit:cover;display:block;background:#d9c9e5}
+.polaroid p,.polaroid figcaption{font-family:'Playfair Display',serif;text-align:center;padding-top:12px;font-style:italic}
+.gallery-tools{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+.upload-label{display:inline-flex;align-items:center;gap:8px}
+.upload-label input{display:none}
+.hint{font-size:12px;color:#bcb0d2;text-align:center;margin-top:12px;line-height:1.6}
+/* letter */
+.reasons{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.reason{min-height:100px;border:1px solid #e7c7f533;border-radius:18px;padding:17px;background:#ffffff08;display:flex;align-items:center;gap:12px;color:#eee3f8;line-height:1.55}
+.reason span{font-size:23px}
+.reason:nth-child(3n+2){background:#e5b8f00c}
+.reason:nth-child(3n){background:#a9c7f00c}
+.reason-button{margin-top:20px}
+/* counter */
+.counter-box{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0}
+.count{background:#ffffff0b;border:1px solid #ffffff20;border-radius:18px;padding:18px 5px;text-align:center}
+.count strong{display:block;font-family:'Playfair Display',serif;font-size:clamp(25px,6vw,42px);color:#f3c4e5;font-weight:500}
+.count small{font-size:11px;color:#c8bddc;text-transform:uppercase;letter-spacing:.1em}
+.mex-clock{margin:18px auto 0;padding:17px 20px;max-width:360px;text-align:center;border:1px solid #e8b9e544;border-radius:18px;background:linear-gradient(120deg,#ffffff0d,#d8b6f018);box-shadow:inset 0 1px #ffffff10}
+.mex-clock span{display:block;color:#c8bddc;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.mex-clock strong{display:block;margin:5px 0;font-family:'Playfair Display',serif;font-size:clamp(30px,7vw,42px);font-weight:500;color:#f3c4e5;font-variant-numeric:tabular-nums}
+.mex-clock small{color:#c8bddc;font-size:12px}
+/* music */
+.music{display:flex;align-items:center;gap:15px;background:linear-gradient(120deg,#ffffff10,#d8b6f014);border:1px solid #ffffff20;border-radius:22px;padding:16px}
+.vinyl{width:66px;height:66px;flex-shrink:0;border-radius:50%;background:repeating-radial-gradient(circle,#171329 0 3px,#39304f 4px 5px);display:grid;place-items:center;box-shadow:0 0 20px #cfa5ee33}
+.vinyl:after{content:"♡";width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#e5a8d0;color:#4b315a;font-size:13px}
+.vinyl.playing{animation:spin 4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.music-info{flex:1;min-width:0}
+.music-info strong{display:block;color:#f6d9ee}
+.music-info small{display:block;color:#c8bddc;margin:4px 0 10px}
+.progress{height:5px;background:#ffffff24;border-radius:9px;overflow:hidden;cursor:pointer}
+.progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,#eaa9d0,#aebcff)}
+.music-controls{display:flex;align-items:center;gap:8px;margin-top:10px}
+.music-controls button{border:0;background:#ffffff15;color:#fff;border-radius:50%;width:32px;height:32px}
+.music-controls .play{width:40px;height:40px;background:linear-gradient(135deg,#e5a5d0,#a99ae9);color:#261c3b;font-size:17px}
+.time{font-size:11px;color:#c8bddc;white-space:nowrap}
+.volume{width:75px;accent-color:#e8a9d1}
+/* constelacion */
+.constellation{width:100%;height:260px;display:block;border-radius:20px;background:radial-gradient(ellipse,#7771a033,transparent 70%)}
+.constellation text{fill:#e8d9f5;font:12px 'DM Sans',sans-serif}
+.constellation .starpoint{fill:#fff;filter:drop-shadow(0 0 5px #d8c6ff)}
+.constellation line{stroke:#d9c9ff;stroke-opacity:.65;stroke-width:1.2;stroke-dasharray:3 5}
+.caption{color:#c8bddc;text-align:center;font-size:13px;line-height:1.7;margin-top:12px}
+/* sorpresa */
+.unlock input::placeholder{color:#bdb2ce}
+.hidden-message{margin-top:18px;padding:22px;border:1px dashed #e9b8e3;border-radius:20px;text-align:center;background:#ffffff09}
+.hidden-message.show{display:block;animation:fadeup .7s ease}
+@keyframes fadeup{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.final{padding:48px 22px;text-align:center}
+.final h2{font-size:clamp(34px,7vw,54px);margin:12px 0;color:#f4c7e7}
+.final p{color:#d4c9e6;line-height:1.8;max-width:500px;margin:0 auto 20px}
+.footer{text-align:center;color:#a99cbd;font-size:12px;padding:25px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;background:#f2d6ed;color:#352344;padding:11px 18px;border-radius:999px;z-index:20;transition:.3s;pointer-events:none;font-size:13px}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Álbum en una pestaña independiente */
+.album-view{display:none;position:fixed;inset:0;z-index:15;overflow-y:auto;padding:18px 14px 40px;background:radial-gradient(ellipse at 15% 8%,#514071 0,transparent 38%),radial-gradient(ellipse at 85% 28%,#3b456d 0,transparent 35%),linear-gradient(145deg,#111024,#1c1a39 52%,#17152d)}
+.album-view.open{display:block;animation:fadeup .35s ease}
+.album-top{width:min(100%,820px);margin:0 auto 12px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.album-panel{width:min(100%,820px);margin:0 auto}
+body.album-open{overflow:hidden}
+@media(max-width:520px){.shell{width:min(100% - 18px,820px);margin-top:8px}.hero{padding-top:38px}.panel{border-radius:22px;padding:19px 15px}.counter-box{gap:6px}.count{padding:14px 2px}.count small{font-size:9px}.music{gap:10px;padding:12px}.vinyl{width:54px;height:54px}.volume{width:55px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.polaroid img{height:160px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+
+/* Mejoras ligeras: priorizan fluidez en móviles */
+.panel{transition:border-color .2s ease}
+.section-head h2{text-shadow:0 0 12px #e9b8ed18}
+.glowline{position:relative}
+.polaroid{cursor:zoom-in}
+.polaroid img{transition:filter .2s ease}
+.reason,.count{transition:border-color .2s ease}
+#backToTop{position:fixed;right:14px;bottom:14px;z-index:12;width:42px;height:42px;border:1px solid #f3c1e377;border-radius:50%;color:#fff;background:#9d79bd;box-shadow:0 3px 12px #08071655;font-size:20px;opacity:0;visibility:hidden;transition:opacity .18s ease}
+#backToTop.visible{opacity:1;visibility:visible}
+#photoLightbox{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:18px;background:#090714f5;opacity:0;visibility:hidden;transition:opacity .18s ease}
+#photoLightbox.open{opacity:1;visibility:visible}
+#photoLightbox img{max-width:94vw;max-height:78vh;object-fit:contain;border-radius:10px}
+#photoLightbox .lightbox-caption{position:absolute;bottom:5vh;left:20px;right:20px;text-align:center;color:#f7eafa;font-family:'Playfair Display',serif;font-style:italic;font-size:17px}
+#photoLightbox .lightbox-close{position:absolute;top:14px;right:16px;width:42px;height:42px;border:1px solid #ffffff55;border-radius:50%;background:#ffffff18;color:white;font-size:24px}
+@media(hover:hover){
+ .reason:hover,.count:hover{border-color:#f3c4e577}
+ .polaroid:hover img{filter:brightness(1.04)}
+}
+@media(prefers-reduced-motion:reduce){#photoLightbox,.panel,.polaroid img{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="sky" aria-hidden="true"></div>
+<main class="shell">
+  <header class="hero">
+    <div class="eyebrow">✧ para mi Yaelita 🌺, con todo mi cariño ✧</div>
+    <h1>Te amo :&gt;</h1>
+    <p>No sé si esta página me quedó perfecta, pero la hice pensando en ti. Quería guardar aquí un poquito de todo lo que me haces sentir. ♡</p>
+    <div style="display:flex;justify-content:center;gap:14px;align-items:center;margin-top:20px"><img src="https://media1.tenor.com/m/lnI645QIjMAAAAAd/gatitos-enamorados-besos-de-amor.gif" alt="" style="width:54px;height:54px;object-fit:contain;border-radius:14px"><img src="https://media1.tenor.com/m/gk7nRJjSIoYAAAAd/peach-goma-love.gif" alt="" style="width:54px;height:54px;object-fit:contain;border-radius:14px"></div>
+    <div class="glowline"></div>
+    <p class="eyebrow">✦ una pequeña historia de nosotros ✦</p>
+    <div style="margin-top:22px"><button class="btn" id="openAlbum" type="button">♡ Abrir nuestro álbum</button></div>
+  </header>
+
+  <section class="panel intro" id="inicio">
+    <div class="envelope-wrap">
+      <div class="eyebrow">tienes una carta esperándote</div>
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Abrir la carta">
+        <div class="env-back"></div><div class="env-flap"></div><div class="env-front"></div><div class="seal">♡</div>
+      </div>
+      <button class="btn" id="openLetter">Abrir mi cartita ✧</button>
+      <p class="hint">Tócala para descubrir lo que guardé aquí para ti.</p>
+    </div>
+    <div class="letter-reveal" id="letterReveal">
+      <div class="letter-paper">
+        <div class="tiny">✧PARA MI BEBÉ HERMOSA 💘✧</div>
+        <div class="center" style="margin-bottom:14px"><img src="https://media1.tenor.com/m/FYrmLKoB1UIAAAAd/peach-and-goma-peach-loves-goma.gif" alt="" style="width:58px;height:58px;object-fit:contain;border-radius:14px"></div>
+        <div class="letter">Amorm, no sé exactamente cómo explicarte lo que siento por ti, pero hay algo que tengo muy claro: eres alguien que ocupa un lugar muy especial en mi corazón. Me gusta tu forma de ser, tu manera de hacerme sonreír y esa sensación tan bonita que me provocas incluso sin darte cuenta.  No quiero prometerte un mundo perfecto, pero sí quiero ofrecerte sentimientos sinceros, cariño y la oportunidad de demostrarte lo mucho que puedes llegar a significar para mí. No sé qué nos depare el futuro, pero si hay algo que quisiera es poder vivir momentos bonitos a tu lado.  Quizá estas palabras no sean suficientes para expresar todo lo que siento, pero quiero que sepas algo: me encantas, te amo, amorm, y no de una manera pasajera. Me gustas de esa forma en la que alguien comienza a convertirse en un pensamiento bonito al que siempre quieres regresar y nunca salirse. ❤️</div>
+        <div class="center" style="margin-top:18px;color:#a65d91;font-family:'Playfair Display',serif;font-style:italic">Con mucho cariño y amorm ♡</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="album-view" id="albumView" aria-hidden="true">
+    <div class="album-top"><button class="btn ghost small" id="closeAlbum" type="button">← Volver</button><span class="eyebrow">✧ nuestra pequeña colección ✧</span></div>
+    <div class="panel album-panel">
+    <div class="section-head"><div class="eyebrow">fragmentos de felicidad</div><h2>Nuestros recuerdos</h2><p>Cada foto guarda un pedacito de esos momentos que hacen más bonita nuestra historia. ♡</p></div>
+    <div class="gallery" id="gallery" aria-live="polite"></div>
+    <p class="hint">Pequeños instantes que quiero seguir guardando contigo. ♡</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><div class="eyebrow">pequeñas cosas, infinitas razones</div><h2>Razones por las que te amo</h2><p>Y aun así, ninguna lista alcanzaría para explicar todo.</p></div>
+    <div class="reasons" id="reasons">
+      <div class="reason"><span>♡</span>Tu forma tan bonita de ser.</div>
+      <div class="reason"><span>✧</span>La manera en que haces que sonría.</div>
+      <div class="reason"><span>☾</span>Porque hasta un día común se siente especial contigo.</div>
+      <div class="reason"><span>🫶</span>La paz que me transmite saber de ti.</div>
+      <div class="reason"><span>🌷</span>Porque eres única y me encantas tal como eres.</div>
+      <div class="reason"><span>✨</span>Porque siempre encuentro algo nuevo que admirar de ti.</div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><div class="eyebrow">desde que comenzó algo bonito</div><h2>Nuestro tiempo</h2><p>Desde el 3 de abril de 2026, una fecha que quiero guardar con mucho cariño. ♡</p></div>
+    <div class="counter-box">
+      <div class="count"><strong id="days">—</strong><small>Días</small></div>
+      <div class="count"><strong id="hours">—</strong><small>Horas</small></div>
+      <div class="count"><strong id="minutes">—</strong><small>Minutos</small></div>
+      <div class="count"><strong id="seconds">—</strong><small>Segundos</small></div>
+    </div>
+    <p class="hint" id="dateHint">Cada segundo suma un recuerdo más a nuestra historia. ♡</p>
+    <div class="mex-clock" aria-live="off"><span>Hora actual · México (centro)</span><strong id="mexTime">--:--:--</strong><small id="mexDate">Cargando fecha…</small></div>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><div class="eyebrow">la melodía que nos acompaña</div><h2>Nuestra canción 🫶</h2><p>Esta canción tiene un rinconcito especial aquí. Puedes darle play cuando quieras.</p></div>
+    <div class="music">
+      <div class="vinyl" id="vinyl"></div>
+      <div class="music-info">
+        <strong>Una canción para ti</strong><small>Nuestra Canción 🫶</small>
+        <div class="progress" id="progress" title="Buscar en la canción"><span id="progressFill"></span></div>
+        <div class="music-controls">
+          <button id="back" aria-label="Retroceder 10 segundos">↶</button>
+          <button class="play" id="play" aria-label="Reproducir">▶</button>
+          <button id="forward" aria-label="Avanzar 10 segundos">↷</button>
+          <span class="time" id="time">0:00 / 0:00</span>
+          <input class="volume" id="volume" type="range" min="0" max="1" step=".01" value=".8" aria-label="Volumen">
+        </div>
+      </div>
+    </div>
+    <audio id="audio" preload="metadata" loop src="./nuestra-cancion.mp3"></audio>
+    <p class="hint">♡✧♡✧♡✧♡</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><div class="eyebrow">dos almas bajo el mismo cielo</div><h2>Nuestra constelación</h2><p>En algún rincón inmenso del universo, me alegra que nuestros caminos se hayan cruzado mi amorm.</p></div>
+    <svg class="constellation" viewBox="0 0 600 260" role="img" aria-label="Constelación decorativa de estrellas">
+      <path d="M75 165 L155 80 L245 132 L315 55 L405 120 L500 65 L535 180 L405 205 L315 55" fill="none" stroke="#d9c9ff" stroke-opacity=".55" stroke-dasharray="3 6"/>
+      <path d="M75 165 L190 205 L245 132 L405 120 L535 180" fill="none" stroke="#d9c9ff" stroke-opacity=".35" stroke-dasharray="3 6"/>
+      <g class="starpoint"><circle cx="75" cy="165" r="4"/><circle cx="155" cy="80" r="5"/><circle cx="245" cy="132" r="4"/><circle cx="315" cy="55" r="6"/><circle cx="405" cy="120" r="5"/><circle cx="500" cy="65" r="4"/><circle cx="535" cy="180" r="5"/><circle cx="190" cy="205" r="3"/><circle cx="405" cy="205" r="3"/></g>
+      <text x="300" y="238" text-anchor="middle">tú + yo · un universo de posibilidades :3</text>
+      <circle cx="315" cy="55" r="19" fill="#f1c6ed" opacity=".12"/><circle cx="315" cy="55" r="10" fill="#f1c6ed" opacity=".12"/>
+    </svg>
+    <p class="caption">No importa cuántas estrellas existan; hay encuentros que hacen que todo el cielo parezca más bonito mi Yaelita. ✧</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><div class="eyebrow">algo que quiero que sepas</div><h2>Un pensamiento para ti</h2><p>¡MUAAAK!. ♡</p></div>
+    <div class="hidden-message show" style="display:block"><div style="font-size:30px;margin-bottom:10px">💌✨</div><h3 style="font-size:27px;margin-bottom:10px;color:#f4c7e7">Mi lugar favorito...</h3><p style="line-height:1.8;color:#e3d8ef">No es un sitio, es esa sensación bonita que aparece cuando pienso en ti. Si pudiera guardar un momento en una estrella, guardaría uno en el que estés sonriendo. Te amo, Amorm. ❤️</p></div>
+  </section>
+
+  <section class="panel final">
+    <div class="eyebrow">y antes de que te vayas...</div>
+    <div style="font-size:42px;margin:12px">☾ ✧ ♡ ✧ ☽</div>
+    <h2>Para ti, Amorm ♡</h2>
+    <p>Si un día estás cansada, triste o simplemente necesitas una pausa, vuelve por aquí. Ojalá esta página te recuerde cuánto te amom, lo mucho que me importas y lo feliz que me hace tenerte en mi vidam.</p>
+    <div class="glowline"></div>
+    <p class="serif" style="font-style:italic;font-size:22px;margin-bottom:0">Con mucho cariño y amorm ♡</p>
+  </section>
+  <footer class="footer">Hecho con cariño y amorm, para la mujer mas linda, mi Yaelita. ✧</footer>
+</main>
+<div class="toast" id="toast"></div>
+<button id="backToTop" type="button" aria-label="Volver al inicio" title="Volver al inicio">↑</button>
+<div id="photoLightbox" role="dialog" aria-modal="true" aria-label="Fotografía ampliada">
+  <button class="lightbox-close" type="button" aria-label="Cerrar fotografía">×</button>
+  <img src="" alt="">
+  <div class="lightbox-caption"></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const toast=(msg)=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)};
+
+/* Cielo vivo: estrellas y pétalos */
+const sky=$('sky');
+for(let i=0;i<18;i++){const s=document.createElement('span');s.className='star';s.textContent=Math.random()>.5?'✦':'·';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.fontSize=(8+Math.random()*12)+'px';s.style.animationDelay=(Math.random()*4)+'s';s.style.animationDuration='5s';sky.appendChild(s)}
+function petalRain(amount=18){for(let i=0;i<amount;i++){const p=document.createElement('span');p.className='petal';p.textContent=['🌸','♡','✧','🌷'][Math.floor(Math.random()*4)];p.style.left=Math.random()*100+'%';p.style.setProperty('--drift',(Math.random()*180-90)+'px');p.style.animationDuration=(5+Math.random()*6)+'s';p.style.animationDelay=(Math.random()*2)+'s';sky.appendChild(p);setTimeout(()=>p.remove(),14000)}}
+petalRain(5);
+
+/* Carta */
+function openLetter(){ $('envelope').classList.add('open');$('letterReveal').classList.add('show');$('openLetter').textContent='Mi carta está abierta ♡';setTimeout(()=>$('letterReveal').scrollIntoView({behavior:'smooth',block:'nearest'}),350);petalRain(24)}
+$('openLetter').addEventListener('click',openLetter);
+$('envelope').addEventListener('click',openLetter);
+$('envelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLetter()}});
+
+/* Pestaña del álbum */
+function setAlbumOpen(open){
+  const view=$('albumView');
+  view.classList.toggle('open',open);
+  view.setAttribute('aria-hidden',String(!open));
+  document.body.classList.toggle('album-open',open);
+  if(open){history.replaceState(null,'',location.pathname+location.search+'#album');petalRain(10)}
+  else{history.replaceState(null,'',location.pathname+location.search)}
+}
+$('openAlbum').addEventListener('click',()=>setAlbumOpen(true));
+$('closeAlbum').addEventListener('click',()=>setAlbumOpen(false));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('albumView').classList.contains('open'))setAlbumOpen(false)});
+
+/* Álbum desde GitHub Pages.
+   Coloca foto.jpg, foto1.jpg, foto2.jpg... en la misma carpeta que index.html.
+   GitHub Pages distingue mayúsculas y minúsculas en los nombres. */
+const PHOTOS = [
+  {file:'foto.jpg', caption:'De esos momentos que guardaría otra vez :3'},
+  {file:'foto1.jpg', caption:'Pudding 👀'},
+  {file:'foto2.jpg', caption:'♡Nuestro primer encuentro y foto♡'},
+  {file:'foto3.jpg', caption:'La tortuga 👀'},
+  {file:'foto4.jpg', caption:'Nuestra química :3♡'},
+  {file:'foto5.jpg', caption:'Nuestra Declaracióm'},
+  {file:'foto6.jpg', caption:'Que pros'},
+  {file:'foto7.jpg', caption:'Besom :3'},
+  {file:'foto8.jpg', caption:'Me encanta estar en el parque contigom'},
+  {file:'foto9.jpg', caption:'Guapoms :3'},
+  {file:'foto10.jpg', caption:'✧♡✧'}
+];
+const gallery=$('gallery');
+PHOTOS.forEach((photo,i)=>{
+  const card=document.createElement('figure');
+  card.className='polaroid';
+  card.style.setProperty('--tilt',((i%2===0?-1:1)*(1+(i%3)))+'deg');
+  const img=document.createElement('img');
+  // GitHub conserva los originales; wsrv entrega una versión WebP reducida
+  // (máximo 1280 px por lado) para acelerar la carga de la galería.
+  const original = 'https://raw.githubusercontent.com/AstarothDx/Jadem/main/' + photo.file;
+  const optimized = new URL('https://wsrv.nl/');
+  optimized.searchParams.set('url', original);
+  optimized.searchParams.set('w', '1280');
+  optimized.searchParams.set('h', '1280');
+  optimized.searchParams.set('fit', 'inside');
+  optimized.searchParams.set('output', 'webp');
+  optimized.searchParams.set('q', '76');
+  img.src=optimized.toString();
+  img.alt=photo.caption;
+  img.loading='lazy';
+  img.decoding='async';
+  img.onerror=()=>card.remove(); // Si el archivo no existe, no deja un recuadro roto.
+  const caption=document.createElement('figcaption');
+  caption.textContent=photo.caption;
+  card.append(img,caption);
+  gallery.appendChild(card);
+});
+
+/* Contador desde nuestra fecha especial: 03/04/2026 (3 de abril de 2026) */
+const FECHA_ESPECIAL = new Date('2026-04-03T00:00:00-06:00').getTime(); // 3 de abril, medianoche de México (centro)
+const mexicoTimeFormatter = new Intl.DateTimeFormat('es-MX',{timeZone:'America/Mexico_City',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+const mexicoDateFormatter = new Intl.DateTimeFormat('es-MX',{timeZone:'America/Mexico_City',weekday:'long',day:'numeric',month:'long',year:'numeric'});
+function updateCounter(){const now=Date.now();const mexicoNow=new Date(now);$('mexTime').textContent=mexicoTimeFormatter.format(mexicoNow);$('mexDate').textContent=mexicoDateFormatter.format(mexicoNow);if(FECHA_ESPECIAL>now){$('dateHint').textContent='Nuestra fecha especial está por llegar. ♡';['days','hours','minutes','seconds'].forEach(id=>$(id).textContent='0');return}let diff=Math.floor((now-FECHA_ESPECIAL)/1000);const d=Math.floor(diff/86400);diff%=86400;const h=Math.floor(diff/3600);diff%=3600;const m=Math.floor(diff/60);const sec=diff%60;$('days').textContent=d.toLocaleString('es-MX');$('hours').textContent=String(h).padStart(2,'0');$('minutes').textContent=String(m).padStart(2,'0');$('seconds').textContent=String(sec).padStart(2,'0')}
+updateCounter();setInterval(updateCounter,1000);
+
+/* Reproductor */
+const audio=$('audio'),play=$('play'),vinyl=$('vinyl');
+function fmt(n){if(!Number.isFinite(n))return'0:00';return Math.floor(n/60)+':'+String(Math.floor(n%60)).padStart(2,'0')}
+play.addEventListener('click',async()=>{if(audio.paused){try{await audio.play();play.textContent='Ⅱ';vinyl.classList.add('playing')}catch(e){toast("No se pudo reproducir. Revisa que nuestra-cancion.mp3 esté en el repositorio.")}}else{audio.pause();play.textContent='▶';vinyl.classList.remove('playing')}});
+audio.addEventListener('play',()=>{play.textContent='Ⅱ';vinyl.classList.add('playing')});
+audio.addEventListener('pause',()=>{play.textContent='▶';vinyl.classList.remove('playing')});
+audio.addEventListener('timeupdate',()=>{$('progressFill').style.width=(audio.duration?audio.currentTime/audio.duration*100:0)+'%';$('time').textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration)});
+audio.addEventListener('error',()=>toast('No se pudo cargar la canción. Comprueba el archivo del repositorio.'));
+$('progress').addEventListener('click',e=>{if(!audio.duration)return;const r=e.currentTarget.getBoundingClientRect();audio.currentTime=((e.clientX-r.left)/r.width)*audio.duration});
+$('back').addEventListener('click',()=>audio.currentTime=Math.max(0,audio.currentTime-10));
+$('forward').addEventListener('click',()=>{if(audio.duration)audio.currentTime=Math.min(audio.duration,audio.currentTime+10)});
+$('volume').addEventListener('input',e=>audio.volume=Number(e.target.value));audio.volume=.8;
+
+
+/* Ampliación cinematográfica de fotografías */
+const lightbox=$('photoLightbox');
+const lightboxImage=lightbox.querySelector('img');
+const lightboxCaption=lightbox.querySelector('.lightbox-caption');
+function closeLightbox(){lightbox.classList.remove('open');document.body.style.overflow=''}
+function openLightbox(src,alt,caption){
+  lightboxImage.src=src;lightboxImage.alt=alt||'Fotografía';
+  lightboxCaption.textContent=caption||'';
+  lightbox.classList.add('open');document.body.style.overflow='hidden';
+}
+gallery.addEventListener('click',e=>{
+  const img=e.target.closest('.polaroid img');
+  if(!img)return;
+  const caption=img.closest('.polaroid').querySelector('figcaption');
+  openLightbox(img.src,img.alt,caption?caption.textContent:'');
+});
+lightbox.querySelector('.lightbox-close').addEventListener('click',closeLightbox);
+lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lightbox.classList.contains('open'))closeLightbox()});
+
+/* Botón discreto para regresar al principio */
+const backToTop=$('backToTop');
+window.addEventListener('scroll',()=>{
+  backToTop.classList.toggle('visible',window.scrollY>500);
+},{passive:true});
+backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+</script>
+</body>
+</html>
